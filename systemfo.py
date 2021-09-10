@@ -12,26 +12,33 @@ import time
 import os
 
 
+#colors 
 green = Fore.GREEN
 cyan = Fore.CYAN
 white = Fore.WHITE
 
 
 dummy = "."
-
 os.system("cls")
+
+
+#functions {
+
+
+
+
+
+
+
 
 def return_cmd(command):
     process = Popen(args=command,stdout=PIPE,shell=True)
     return str(process.communicate()[0])
 
 
+#}
 
-#os name
-#processor name
-
-
-
+#objects
 user32 = ctypes.windll.user32
 processor = psutil.Process()
 memory = psutil.virtual_memory()
@@ -58,9 +65,12 @@ uptime = datetime.datetime.fromtimestamp(raw_uptime).strftime("%H:%M:%S")
 
 
 #memory_related_variables
-total_memory = memory.total
-available_memory = memory.available
+total_memory =( memory.total // 1024 ** 2)
+available_memory = (memory.available // 1024 ** 2 )
 memory_usage_percent = memory.percent
+
+
+
 
 
 #cmd = return_cmd("powershell \"gps | where {$_.MainWindowTitle } | select Description ").replace(r"\r","").split("\\n")
@@ -75,7 +85,7 @@ banner = f"""
 {green} MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  Uptime       :{white} {uptime}
 {green} MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  .            :{white} .
 {green} MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  .            :{white} .
-{green} MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  Cpu-Frequency:{white} { cpu_frequency[0]/1000 }
+{green} MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  Cpu-Freq     :{white} { cpu_frequency[0]/1000 }
 {green} MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  .            :{white} {dummy}
 {cyan       }                                       .            :{white} {dummy}
 {green} MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  .            :{white} .
@@ -85,7 +95,7 @@ banner = f"""
 {green} MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  .            :{white} .
 {green} `^^^^^^MMMMMMM  MMMMMMMMMMMMMMMMMMM {cyan}  CPU          :{white} {cpu_name}
 {green}       ````^^^^  ^^MMMMMMMMMMMMMMMMM {cyan}  GPU          :{white} {gpu_name}
-{green}                      ````^^^^^^MMMM {cyan}  Memory       :{white} {dummy}
+{green}                      ````^^^^^^MMMM {cyan}  Memory       :{white} {available_memory} / {total_memory} ( {memory_usage_percent}% )
 
 
 """

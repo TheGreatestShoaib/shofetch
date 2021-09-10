@@ -21,7 +21,7 @@ os.system("cls")
 
 
 
-banner = open("banner.txt","r").read().split("\n")
+banner = open("apple.txt","r").read().split("\n")
 
 #functions {
 
@@ -119,9 +119,6 @@ info_dict = {
 x = 0
 limits = limit_determiner(banner)
 whitespace = "    "
-
-print(info_dict[1][0],":",info_dict[1][1])
-
 seperator = " : "
 
 
@@ -130,7 +127,14 @@ for i in range(len(banner)):
     value= info_dict[i][1]
 
     try:
-        print(green ,banner[i], whitespace , cyan , key , seperator , white , value )
+        #print(green ,banner[i], whitespace , cyan , key , seperator , white , value )
+
+        if not len(banner[i]) < limits:
+            #print(len(banner[i]))
+            print(green ,banner[i], whitespace , cyan , key , seperator , white , value )
+        else:
+            print(" " * ( limits - len(banner[i]) ) , cyan, "      " , key , seperator , white,value)
+
     except KeyError:
         print(banner[i])
 
