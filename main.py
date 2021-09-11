@@ -1,7 +1,6 @@
 
 from winfetch import __conf
 from colorama import Fore
-
 import os
 
 os.system("cls")
@@ -14,9 +13,6 @@ cyan = Fore.CYAN
 white = Fore.WHITE
 
 
-
-
-
 def sort_it(datas):
 	sorted_data = {}
 	x = 0
@@ -27,8 +23,21 @@ def sort_it(datas):
 	return sorted_data
 
 
-def vartest(art):
-	pass
+def art_it(art):
+	art = art
+	full = limit_determiner(art)
+
+	for x in range(len(art)):
+		if art[x] == "\n":
+			art.remove(art[x])
+
+		if len(art[x]) < full:
+			mult = full - len(art[x])
+			context = " "*mult
+			art[x] = art[x]+context
+
+	return art
+
 
 
 def limit_determiner(banner):
@@ -40,10 +49,11 @@ def limit_determiner(banner):
     return highest_val
 
 
-
 x = 0
 info_dict = sort_it(__conf.sysfo)
-banner = __conf.banner_name.split("\n")
+raw_banner = __conf.banner_name.split("\n")
+banner = art_it(raw_banner)
+
 limits = limit_determiner(banner)
 whitespace = "    "
 seperator = " : "

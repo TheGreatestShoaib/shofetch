@@ -4,7 +4,7 @@ from winfetch.sysmfy import *
 import winfetch.ascii_logos as logo
 
 
-banner_name = logo.mac
+banner_name = logo.windows
 
 
 sysfo = {}
