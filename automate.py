@@ -9,6 +9,8 @@ import cpuinfo
 import datetime
 
 
+from winfetch_core import logo
+
 #colors 
 green = Fore.GREEN
 cyan = Fore.CYAN
@@ -18,10 +20,7 @@ white = Fore.WHITE
 dummy = "."
 os.system("cls")
 
-
-
-
-banner = open("apple.txt","r").read().split("\n")
+banner = logo.windows.split("\n")
 
 #functions {
 
@@ -74,6 +73,12 @@ available_memory = (memory.available // 1024 ** 2 )
 memory_usage_percent = memory.percent
 
 
+def cpu_info():
+    pass
+
+
+
+
 # info_dict = {
 #     "host_name":host_name,
 #     "Windows -v":os_version,
@@ -97,17 +102,7 @@ info_dict = {
     8:("Resolution",f"{screensize[0]}X{screensize[1]}"),
     9:("uptime",uptime),
     10:("CPU",cpu_name),
-    11:("GPU",gpu_name),
-    12:("memory",f"{available_memory} / {total_memory} ( {memory_usage_percent}% )"),
-    13:("Cpu-Freq",cpu_frequency[0]/1000),
-    14:("CPU",cpu_name),
-    15:("GPU",gpu_name),
-    16:("memory",f"{available_memory} / {total_memory} ( {memory_usage_percent}% )"),
-    17:("Cpu-Freq",cpu_frequency[0]/1000),
-    18:("CPU",cpu_name),
-    19:("GPU",gpu_name),
-    20:("memory",f"{available_memory} / {total_memory} ( {memory_usage_percent}% )"),
-    21:("Cpu-Freq",cpu_frequency[0]/1000),
+
 
 
 
@@ -123,11 +118,12 @@ seperator = " : "
 
 
 for i in range(len(banner)):
-    key = info_dict[i][0]
-    value= info_dict[i][1]
+
 
     try:
         #print(green ,banner[i], whitespace , cyan , key , seperator , white , value )
+        key = info_dict[i][0]
+        value= info_dict[i][1]
 
         if not len(banner[i]) < limits:
             #print(len(banner[i]))
@@ -136,7 +132,7 @@ for i in range(len(banner)):
             print(" " * ( limits - len(banner[i]) ) , cyan, "      " , key , seperator , white,value)
 
     except KeyError:
-        print(banner[i])
+        print(green,banner[i])
 
 
 
