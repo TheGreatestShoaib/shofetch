@@ -23,8 +23,7 @@ arch = """
  #'                         `#
 """
 
-windows = """
-                            .oodMMMM
+windows = """                            .oodMMMM
                    .oodMMMMMMMMMMMMM
        ..oodMMM  MMMMMMMMMMMMMMMMMMM
  oodMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM

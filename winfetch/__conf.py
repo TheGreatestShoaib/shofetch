@@ -9,15 +9,18 @@ banner_name = logo.windows
 
 sysfo = {}
 
-sysfo["host_name"] = host_name
-sysfo["Windows -v"] = os_version
-sysfo["Resolution"] = (screensize[0],screensize[1])
+
+sysfo["Platform"] = platform_name
+sysfo["Host_name"] = host_name
+sysfo["OS"] = os_version
+sysfo["Kernel"] = kernel
 sysfo["uptime"] = uptime
-sysfo["Cpu"] = cpu_name
-sysfo["GPU"] = gpu_name
+sysfo["Resolution"] = screensize
+#sysfo["Architecure"] = processor_architecture
+#sysfo["Cpus-Freq"] = cpu_frequency[0]/100
+#sysfo["Cpu_model"] = cpu_name
+#sysfo["GPU_model"] = gpu_name
 sysfo["memory"] = f"{available_memory} / {total_memory} ( {memory_usage_percent}% )"
-sysfo["Cpus-Freq"] = cpu_frequency[0]/100
-sysfo["Windowss -v"] = os_version
-sysfo["Resolsution"] = (screensize[0],screensize[1])
-sysfo["uptimse"] = uptime
+
+
 
