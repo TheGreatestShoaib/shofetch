@@ -1,10 +1,11 @@
 
 from winfetch import __conf
 from colorama import Fore
-import os
+import os , time
+os.system("clear")
 
-os.system("cls")
 
+start_time_point = time.perf_counter()
 
 
 #colors 
@@ -75,3 +76,12 @@ for i in range(len(banner)):
 
     except KeyError:
         print(green,banner[i])
+
+
+
+end_time_point = time.perf_counter()
+
+
+total_time = end_time_point-start_time_point 
+
+print(total_time)
