@@ -1,29 +1,22 @@
 
 from winfetch import __conf
 from colorama import Fore
-import os , time
-
+import os , time , platform
 from pprint import pprint
 
-os.system("cls")
 
-start_time_point = time.perf_counter()
+def clear():
+	if platform.system() == "Windows":
+		os.system("cls")
+	else:
+		os.system("clear")
+
+clear()
 
 #colors 
 green = Fore.GREEN
 cyan = Fore.CYAN
 white = Fore.WHITE
-
-
-def whitespace_checker(character):
-	
-	for char in character:
-		if char != " " or "\n":
-			return False
-
-	return True
-
-
 
 def sort_it(datas):
 	sorted_data = {}
@@ -33,8 +26,6 @@ def sort_it(datas):
 		x+=1
 
 	return sorted_data
-
-
 
 
 def limit_determiner(banner):
@@ -62,13 +53,6 @@ def art_it(art):
 	return empt
 
 
-
-
-
-
-
-
-x = 0
 info_dict = sort_it(__conf.sysfo)
 raw_banner = __conf.banner_name.split("\n")
 banner = art_it(raw_banner)
@@ -78,14 +62,8 @@ whitespace = "    "
 seperator = " : "
 
 
-
-
-
 for i in range(len(banner)):
-
-
     try:
-        #print(green ,banner[i], whitespace , cyan , key , seperator , white , value )
         key = info_dict[i][0]
         value= info_dict[i][1]
 
@@ -97,15 +75,4 @@ for i in range(len(banner)):
 
     except KeyError:
         print(green,banner[i])
-
-
-
-
-end_time_point = time.perf_counter()
-# 
-
-total_time = end_time_point-start_time_point 
-
-print(total_time)
-
 
