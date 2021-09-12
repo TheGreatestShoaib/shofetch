@@ -9,12 +9,27 @@ import time , os
 import datetime
 
 
+#  powershell "Get-CimInstance -ClassName Win32_VideoController -Property *"
+
+WIN_GPU ="powershell \"Get-CimInstance -ClassName Win32_VideoController -Property caption|Select-Object caption \"" 
+WIN_CPU = "wmic cpu get name"
 
 
 def stdout_control(cmd):
 	output = Popen(SCREEN_RES_LINUX,shell=True, stdout=PIPE).communicate()[0].decode().replace("\n","")
 	return output.decode().replace("\n","")
 
+
+
+
+def win_get_gpu():
+	output = Popen(WIN_GPU,shell=True, stdout=PIPE).communicate()[0].decode().split("\n")
+	return output[3]
+
+
+def win_get_cpu():
+	output = Popen(WIN_CPU,shell=True, stdout=PIPE).communicate()[0].decode().split("\n")
+	return output[1].strip()
 
 
 #objects
@@ -37,20 +52,40 @@ CPU_MODEL = "cat /proc/cpuinfo | grep \"model name\""
 platform_name = platform.system()
 	
 
+
+cpu_frequency  = psutil.cpu_freq()
+
+
+
 if platform_name == "Windows":
 	
 	import ctypes
 	user32 = ctypes.windll.user32
 	screen = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 	screensize = f"{screen[1]}x{screen[1]} Pixels"
+	
 	processor_architecture = os.environ["PROCESSOR_ARCHITECTURE"]
+
 	kernel = os.environ["OS"]
+
 	os_version = platform.platform(terse=True)
+
+	gpu_name = win_get_gpu()
+
+	cpu_name = f"{win_get_cpu()} @ { cpu_frequency[2]/100 } GHz "
+
+
+
 
 
 else:
+
 	screensize = stdout_control(SCREEN_RES_LINUX)
+	processor_architecture = ""
 	kernel = stdout_control(LINUX_KERNEL)
+	cpu_name = ""
+	gpu_name = ""
+
 	
 
 

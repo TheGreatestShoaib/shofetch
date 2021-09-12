@@ -3,7 +3,8 @@ __LOGOS__ = ["arch","windows","apple","ubuntu"]
 
 
 arch = """
-               +              
+
+
                #              
               ###             
              #####            
@@ -20,10 +21,11 @@ arch = """
    ######'           '######  
   ;####                 ##### 
   ##'                     '## 
- #'                         `#
+ #'                         `#          
 """
 
-windows = """                            .oodMMMM
+windows = """
+                            .oodMMMM
                    .oodMMMMMMMMMMMMM
        ..oodMMM  MMMMMMMMMMMMMMMMMMM
  oodMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
@@ -44,7 +46,8 @@ windows = """                            .oodMMMM
 """
 
 
-mac = """                 ,xNMM.         
+mac = """
+                 ,xNMM.         
                .OMMMMo          
                lMMM"            
      .;loddo:.  .olloddol;.     
@@ -73,7 +76,7 @@ trial= """
    cKMMMMMMMMMMNWMMMMMMMMMM0:  
  .KMMMMMMMMMMMMMMMMMMMMMMMWd.   
  XMMMMMMMMMMMMMMMMMMMMMMMX.     
-;MMMMMMMMMMMMMMMMMMMMMMMM:   
+;MMMMMMMMMMMMMMMMMMMMMMMM:      
 :MMMMMMMMMMMMMMMMMMMMMMMM:  
 .MMMMMMMMMMMMMMMMMMMMMMMMX.  
  kMMMMMMMMMMMMMMMMMMMMMMMMWd.   
@@ -107,3 +110,5 @@ tiger = """
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠿⣧⣾⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣮⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 """
+
+

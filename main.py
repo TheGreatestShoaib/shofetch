@@ -3,7 +3,9 @@ from winfetch import __conf
 from colorama import Fore
 import os , time
 
-os.system("clear")
+from pprint import pprint
+
+os.system("cls")
 
 start_time_point = time.perf_counter()
 
@@ -11,6 +13,16 @@ start_time_point = time.perf_counter()
 green = Fore.GREEN
 cyan = Fore.CYAN
 white = Fore.WHITE
+
+
+def whitespace_checker(character):
+	
+	for char in character:
+		if char != " " or "\n":
+			return False
+
+	return True
+
 
 
 def sort_it(datas):
@@ -23,21 +35,6 @@ def sort_it(datas):
 	return sorted_data
 
 
-def art_it(art):
-	art = art
-	full = limit_determiner(art)
-
-	for x in range(len(art)):
-		if art[x] == "\n":
-			art.remove(art[x])
-
-		if len(art[x]) < full:
-			mult = full - len(art[x])
-			context = " "*mult
-			art[x] = art[x]+context
-
-	return art
-
 
 
 def limit_determiner(banner):
@@ -49,6 +46,28 @@ def limit_determiner(banner):
     return highest_val
 
 
+def art_it(art):
+	empt = []
+	full = limit_determiner(art)
+
+	for x in range(len(art)):
+		if art[x] == '':
+			pass
+		else:
+			if len(art[x]) < full:
+				mult = full - len(art[x])
+				context = " "*mult
+				empt.append(art[x]+context)
+
+	return empt
+
+
+
+
+
+
+
+
 x = 0
 info_dict = sort_it(__conf.sysfo)
 raw_banner = __conf.banner_name.split("\n")
@@ -57,6 +76,9 @@ banner = art_it(raw_banner)
 limits = limit_determiner(banner)
 whitespace = "    "
 seperator = " : "
+
+
+
 
 
 for i in range(len(banner)):
@@ -80,7 +102,7 @@ for i in range(len(banner)):
 
 
 end_time_point = time.perf_counter()
-
+# 
 
 total_time = end_time_point-start_time_point 
 
