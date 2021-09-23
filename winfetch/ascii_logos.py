@@ -3,8 +3,6 @@ __LOGOS__ = ["arch","windows","apple","ubuntu"]
 
 
 arch = """
-
-
                #              
               ###             
              #####            
@@ -47,6 +45,7 @@ windows = """
 
 
 mac = """
+
                  ,xNMM.         
                .OMMMMo          
                lMMM"            

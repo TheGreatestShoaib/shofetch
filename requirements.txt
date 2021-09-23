@@ -1,5 +1,3 @@
 psutil
-GPUtil
-py-cpuinfo
 colorama
 
