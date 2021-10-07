@@ -2,7 +2,12 @@ from winfetch.sysmfy import *
 import winfetch.ascii_logos as logo
 
 
-banner_name = logo.small_arch
+banner_name = logo.arch
+banner_name = logo.small_arch 
+
+
+
+
 sysfo = {}
 
 
