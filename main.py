@@ -4,7 +4,7 @@ from colorama import Fore
 import os , time , platform
 from pprint import pprint
 import styles
-
+import emojis
 
 
 def clear():
@@ -98,6 +98,30 @@ keylen= highest_keylen(info_dict)
 
 
 styles.gradient(banner,info_dict,limits,keylen)
+
+red = emojis.encode(':yellow_circle:')
+
+
+print()
+whitespace="                     "
+print(whitespace,end='')
+
+for i in range(31,35):
+    color = f"\033[1;{i}m "
+    print(color,red,end='')
+
+print()
+
+print(whitespace,end='')
+
+
+for i in range(36,39):
+    color = f"\033[1;{i}m "
+    print(color,red,end='')
+
+
+
+
 
 #print(info_dict)
 
