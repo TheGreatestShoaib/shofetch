@@ -3,6 +3,8 @@ from winfetch import __conf
 from colorama import Fore
 import os , time , platform
 from pprint import pprint
+import styles
+
 
 
 def clear():
@@ -19,13 +21,32 @@ cyan = Fore.CYAN
 white = Fore.WHITE
 
 def sort_it(datas):
-	sorted_data = {}
-	x = 0
+	sorted_data = {
+	1: f'{os.environ["USER"]}@{platform.uname().node} ',
+	2:'--------------',
+
+	}
+	x = 3
 	for key,value in datas.items():
 		sorted_data[x] = (key,value)
 		x+=1
 
 	return sorted_data
+
+
+
+
+def highest_keylen(data):
+
+	highest = 0 
+
+	for key in data.values():
+		if len(key[0]) > highest:
+			highest = len(key[0])
+			#print(highest,key[0])
+
+	return highest
+
 
 
 def limit_determiner(banner):
@@ -40,17 +61,17 @@ def limit_determiner(banner):
 def art_it(art):
 	empt = []
 	full = limit_determiner(art)
-	count = 0
 	for x in range(len(art)):
 		if art[x] == ' ':
-			print("bruh"+str(count))
+			pass
 		else:
 
 			if len(art[x]) < full:
 				mult = full - len(art[x])
 				context = " "*mult
 				empt.append(art[x]+context)
-			count += 1
+			else:
+				empt.append(art[x])
 	return empt
 
 
@@ -65,31 +86,49 @@ banner = art_it(raw_banner)
 
 
 limits = limit_determiner(banner)
-whitespace = "    "
-seperator = " : "
+# whitespace = "    "
+# seperator = " : "
 
-half = len(banner)//2
-way_detector = 0
-
-
-for i in range(len(banner)):
-    try:
-        if way_detector > half:
-            green = Fore.RED
+# half = len(banner)//2
+# way_detector = 0
 
 
 
-        key = info_dict[i][0]
-        value= info_dict[i][1]
+keylen= highest_keylen(info_dict)
 
-        if not len(banner[i]) < limits:
-            #print(len(banner[i]))
-            print(green ,banner[i], whitespace , cyan , key , seperator , white , value )
-        else:
-            print(" " * ( limits - len(banner[i]) ) , cyan, "      " , key , seperator , white,value)
+
+styles.gradient(banner,info_dict,limits,keylen)
+
+#print(info_dict)
+
+
+
+
+
+
+
+
+
+
+# for i in range(len(banner)):
+#     try:
+#         if way_detector > half:
+#             green = Fore.RED
+
+
+
+#         key = info_dict[i][0]
+#         value= info_dict[i][1]
+
+#         if not len(banner[i]) < limits:
+#             #print(len(banner[i]))
+#             print(green ,banner[i], whitespace , cyan , key , seperator , white , value )
+#         else:
+#             print(" " * ( limits - len(banner[i]) ) , cyan, " " , key , seperator , white,value)
     
-        way_detector += 1
-    except KeyError:
-        print(green,banner[i])
+#         way_detector += 1
+#     except KeyError:
+#         print(green,banner[i])
 
-
+print()
+print()
