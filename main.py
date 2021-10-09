@@ -103,32 +103,42 @@ red = emojis.encode(':yellow_circle:')
 
 
 print()
-whitespace="                     "
-print(whitespace,end='')
-
-for i in range(31,35):
-    color = f"\033[1;{i}m "
-    print(color,red,end='')
-
-print()
-
-print(whitespace,end='')
 
 
-for i in range(36,39):
-    color = f"\033[1;{i}m "
-    print(color,red,end='')
+def defult_msg():
+    whitespace="                     "
+    print(whitespace,end='')
+    for i in range(31,35):
+        color = f"\033[1;{i}m "
+        print(color,red,end='')
 
+    print()
+    print(whitespace,end='')
+    for i in range(36,39):
+        color = f"\033[1;{i}m "
+        print(color,red,end='')
 
 
 
+def chinese_msg():
+    word = [36781,36782 ,36783 ,36784 ,36785 ,36786]
+    whitespace = "                      "
+    x = 0
+    print(whitespace,end="")
+    for i in range(31,35):
 
-#print(info_dict)
+        print(f"\033[1;{i}m",chr(word[x]),end="")
+        x+=1
+    x=0
+    for i in range(31,35):
+        print(f"\033[1;{i}m",chr(word[x]),end="")
+        x+=1
 
 
-
-
-
+if __conf.msg_type == "chinese":
+    chinese_msg()
+else:
+    defult_msg()
 
 
 

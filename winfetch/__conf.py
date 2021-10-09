@@ -3,6 +3,10 @@ import winfetch.ascii_logos as logo
 import emojis
 
 
+
+msg_type = "chinese"
+#msg_type="default"
+
 #banner_name = logo.arch
 banner_name = logo.small_arch 
 
@@ -31,7 +35,7 @@ sysfo = {}
 sysfo[os_text] = os_version()
 #sysfo["Host_name"] = host_name().node
 #sysfo["Kernel"] = kernel()
-sysfo[uptime_text] = uptime
+sysfo[uptime_text] = uptime()
 sysfo[resolution_text] = screensize()
 #sysfo["Architecure"] = processor_architecture()
 #sysfo["Cpus-Freq "] = f"{cpu_frequency()[2]/1000} gHZ"
