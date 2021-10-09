@@ -22,72 +22,26 @@ arch = """
  #'                         `# 
 """
 
-red = "\x1b[31m"
-green = "\x1b[32m"
-
-blue = "\x1b[36m"
-yellow = "\x1b[33m"
-
-
-windows2 = f"""
- {red}               {green}          .oodMM
- {red}               {green}   .oodMMMMMMMMM
- {red}      ..oodMMM {green} MMMMMMMMMMMMMMM
- {red}oodMMMMMMMMMM {green} MMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMM
-                                 sadfsdfdf          
- {blue}MMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMM
- {blue}     ````^^^^ {yellow} ^^MMMMMMMMMMMMMM
- {blue}              {yellow}      ```^^^^^MMM
+windows = """
+                            .oodMMMM
+                   .oodMMMMMMMMMMMMM
+       ..oodMMM  MMMMMMMMMMMMMMMMMMM
+ oodMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ 
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ `^^^^^^MMMMMMM  MMMMMMMMMMMMMMMMMMM
+       ````^^^^  ^^MMMMMMMMMMMMMMMMM
+                      ````^^^^^^MMMM
 """
-
-
-
-
-
-windows = f"""
- {red}               {green}           .oodMMM
- {red}               {green}   .oodMMMMMMMMMMM
- {red}      ..oodMMM {green} MMMMMMMMMMMMMMMMM
- {red}oodMMMMMMMMMMM {green} MMMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMMM
- {red}MMMMMMMMMMMMMM {green} MMMMMMMMMMMMMMMMM
- {red}|   ^   ^   ^| |   .   .   .   |
- {blue}MMMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMMM
- {blue}MMMMMMMMMMMMMM {yellow} MMMMMMMMMMMMMMMMM
-
-"""
-
-
-
-brh = """
- _______   _______
-|       | |       |
-|       | |       |
-|       | |       |
- -------   -------
- -------   -------
-|       | |       |
-|       | |       |
-|_______| |_______|
-
-"""
-
-
 
 
 mac = """
@@ -169,37 +123,6 @@ small_arch =f"""
  """
 
 
-
-android= """
-   ;,           ,;
-    ';,.-----.,;'
-   ,'           ',
-  /    O     O    \\
- |                 |
- '-----------------'
- """
-
-manjaro = """
-██████████ ████
-█████      ████
-█████ ████ ████
-█████ ████ ████
-█████ ████ ████
-█████ ████ ████
-█████ ████ ████"""
-
-windows_v2= """
- _______   _______
-|███████| |███████|
-|███████| |███████|
-|███████| |███████|
- .................
-|███████| |███████|
-|███████| |███████|
-|███████| |███████|
- -------   -------
-
- """
 
 
 
