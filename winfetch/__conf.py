@@ -4,8 +4,8 @@ import emojis
 
 
 
-msg_type = "chinese"
-#msg_type="default"
+# msg_type = "chinese"
+msg_type="default"
 
 #banner_name = logo.arch
 banner_name = logo.small_arch 
