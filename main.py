@@ -24,7 +24,7 @@ cyan = Fore.CYAN
 white = Fore.WHITE
 
 def sort_it(datas):
-	if platform.system=="Linux":
+	if platform.system() == "Linux":
 		user = os.environ["USER"]
 	else:
 		user = os.environ["USERNAME"]
