@@ -7,6 +7,8 @@ import styles
 import emojis
 
 
+
+
 def clear():
 	if platform.system() == "Windows":
 		os.system("cls")
@@ -135,8 +137,33 @@ def chinese_msg():
         x+=1
 
 
+def custom_msg():
+    whitespace = "                       "
+
+    word = "devoured by her smile and now suffocating for her stupidity"
+
+
+    i = 31
+    x = 0
+    print(whitespace,end="")
+    while x < len(word):
+        color = f"\033[1;{i}m"
+        print(color+word[x],end="")
+        x+=1
+        if i > 37:
+            i=31
+
+        i+=1
+
+
+
+
+
 if __conf.msg_type == "chinese":
     chinese_msg()
+
+elif __conf.msg_type == "custom":
+    custom_msg()
 else:
     defult_msg()
 
