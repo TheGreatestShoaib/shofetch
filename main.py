@@ -1,4 +1,5 @@
 
+from concurrent.futures import ThreadPoolExecutor as threadpool
 from winfetch import __conf
 from colorama import Fore
 import os , time , platform
@@ -63,7 +64,6 @@ def limit_determiner(banner):
 
     return highest_val
 
-
 def art_it(art):
 	empt = []
 	full = limit_determiner(art)
@@ -79,37 +79,6 @@ def art_it(art):
 			else:
 				empt.append(art[x])
 	return empt
-
-
-info_dict = sort_it(__conf.sysfo)
-raw_banner = __conf.banner_name.split("\n")
-banner = art_it(raw_banner)
-#banner = raw_banner
-
-
-
-
-
-
-limits = limit_determiner(banner)
-# whitespace = "    "
-# seperator = " : "
-
-# half = len(banner)//2
-# way_detector = 0
-
-
-
-keylen= highest_keylen(info_dict)
-
-
-styles.gradient(banner,info_dict,limits,keylen)
-
-red = emojis.encode(':yellow_circle:')
-
-
-print()
-
 
 def defult_msg():
     whitespace="                     "
@@ -163,37 +132,41 @@ def custom_msg():
 
 
 
-if __conf.msg_type == "chinese":
-    chinese_msg()
-
-elif __conf.msg_type == "custom":
-    custom_msg()
-else:
-    defult_msg()
+if __name__ == "__main__":
 
 
+	info_dict = sort_it(__conf.sysfo)
+	raw_banner = __conf.banner_name.split("\n")
+	banner = art_it(raw_banner)
+	#banner = raw_banner
+
+	limits = limit_determiner(banner)
+	# whitespace = "    "
+	# seperator = " : "
+
+	# half = len(banner)//2
+	# way_detector = 0
+
+
+	keylen= highest_keylen(info_dict)
+	styles.gradient(banner,info_dict,limits,keylen)
+	red = emojis.encode(':yellow_circle:')
+
+
+	print()
 
 
 
-# for i in range(len(banner)):
-#     try:
-#         if way_detector > half:
-#             green = Fore.RED
+	if __conf.msg_type == "chinese":
+		chinese_msg()
+
+	elif __conf.msg_type == "custom":
+		custom_msg()
+	else:
+		defult_msg()
 
 
-
-#         key = info_dict[i][0]
-#         value= info_dict[i][1]
-
-#         if not len(banner[i]) < limits:
-#             #print(len(banner[i]))
-#             print(green ,banner[i], whitespace , cyan , key , seperator , white , value )
-#         else:
-#             print(" " * ( limits - len(banner[i]) ) , cyan, " " , key , seperator , white,value)
-    
-#         way_detector += 1
-#     except KeyError:
-#         print(green,banner[i])
 
 print()
 print()
+

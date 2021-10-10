@@ -109,9 +109,9 @@ cpu_frequency  = psutil.cpu_freq
 host_name = platform.uname
 #os_version = platform.uname().release
 raw_uptime = psutil.boot_time()
-uptime = datetime.datetime.fromtimestamp(raw_uptime).strftime("%H:%M:%S")
+#uptime = datetime.datetime.fromtimestamp(raw_uptime).strftime("%H:%M:%S")
 
-#uptime = unix_uptime
+uptime = unix_uptime
 
 #memory_related_variables
 total_memory =( memory.total // 1024 ** 2)
