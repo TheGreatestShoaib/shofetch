@@ -23,8 +23,12 @@ cyan = Fore.CYAN
 white = Fore.WHITE
 
 def sort_it(datas):
+	if platform.system=="Linux":
+		user = os.environ["USER"]
+	else:
+		user = os.environ["USERNAME"]
 	sorted_data = {
-	1: f'{os.environ["USER"]}@{platform.uname().node} ',
+	1: f'{user}@{platform.uname().node} ',
 	2:'--------------',
 
 	}

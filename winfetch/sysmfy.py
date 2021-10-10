@@ -92,8 +92,8 @@ def unix_os_version():
 	return stdout_control(OS_NAME)
 
 def unix_uptime():
-    raw_time = stdout_control("uptime -p")
-    return raw_time
+    uptime2 = "uptime |awk -F'[:, ]' '{print $7\"h\" \" \"$8\"m\"}'"
+    return stdout_control(uptime2)
 
 
 #hardware_information_variables
@@ -109,9 +109,9 @@ cpu_frequency  = psutil.cpu_freq
 host_name = platform.uname
 #os_version = platform.uname().release
 raw_uptime = psutil.boot_time()
-#uptime = datetime.datetime.fromtimestamp(raw_uptime).strftime("%H:%M:%S")
+uptime = datetime.datetime.fromtimestamp(raw_uptime).strftime("%H:%M:%S")
 
-uptime = unix_uptime
+#uptime = unix_uptime
 
 #memory_related_variables
 total_memory =( memory.total // 1024 ** 2)
