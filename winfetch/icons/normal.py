@@ -1,12 +1,10 @@
 
-import emojis
+
+uptime_text =f"{chr(63055)} Uptime"
+os_text = f"{chr(63523)} OS"
+resolution_text =f"{chr(63378)} Resolution"
+memory_text = f"{chr(63578)} memory"
+cpu_text =f"{chr(62171)} CPU"
+gpu_text =f"{chr(36783)} GPU"
 
 
-
-
-uptime_text = emojis.encode(":clock130: Uptime")
-os_text = emojis.encode(":computer: OS")
-resolution_text = emojis.encode(":mag: Resolution")
-memory_text = emojis.encode(":cd: memory")
-cpu_text = emojis.encode(":paperclip: CPU")
-gpu_text = emojis.encode(":computer: OS")

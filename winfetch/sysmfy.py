@@ -28,7 +28,7 @@ CPU_MODEL = "cat /proc/cpuinfo |grep 'model name' | cut -d \":\" -f 2| head -n1"
 ARCHITECTURE = "uname -m"
 GPU_MODEL = "lspci |grep VGA |cut -d ':' -f3"
 OS_NAME = "cat /etc/os-release | grep NAME | head -1 | cut -d'\"' -f 2"
-
+MEM_INFO = "free | grep Mem  | awk '{print $2}' "
 
 #  powershell "Get-CimInstance -ClassName Win32_VideoController -Property *"
 
@@ -95,6 +95,16 @@ def unix_uptime():
     uptime2 = "uptime |awk -F'[:, ]' '{print $7\"h\" \" \"$8\"m\"}'"
     return stdout_control(uptime2)
 
+def unix_total_memory():
+    return stdout_control("free | grep Mem  | awk '{print $2}' ")
+
+def unix_used_memory():
+    return stdout_control("free | grep Mem  | awk '{print $3}' ")
+
+def unix_free_memory():
+    return stdout_control("free | grep Mem  | awk '{print $4}' ")
+
+
 
 #hardware_information_variables
 
@@ -108,7 +118,7 @@ cpu_frequency  = psutil.cpu_freq
 #os_informations_variables
 host_name = platform.uname
 #os_version = platform.uname().release
-raw_uptime = psutil.boot_time()
+#raw_uptime = psutil.boot_time()
 #uptime = datetime.datetime.fromtimestamp(raw_uptime).strftime("%H:%M:%S")
 
 uptime = unix_uptime
@@ -136,4 +146,7 @@ else:
 	cpu_name = unix_cpu  #f"{stdout_control(CPU_MODEL)} @ {cpu_frequency} GHz"
 	gpu_name = unix_gpu
 	os_version = unix_os_version
+	# total_memory = unix_total_memory
+	# available_memory = unix_free_memory
+	# memory_usage_percent = int(unix_used_memory()) / (int(unix_total_memory()) * 100 )
 

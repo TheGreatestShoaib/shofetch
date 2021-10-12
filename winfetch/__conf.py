@@ -3,7 +3,7 @@ import winfetch.ascii_logos as logo
 import emojis
 
 #from winfetch.icons.chinese import *
-from winfetch.icons.normal import *
+from winfetch.icons.chinese import *
 
 msg_type = "chinese"
 #msg_type="chinese"
@@ -43,8 +43,9 @@ sysfo[resolution_text] = screensize()
 #sysfo["Cpus-Freq "] = f"{cpu_frequency()[2]/1000} gHZ"
 #sysfo["Cpu_model "] = cpu_name()
 sysfo[cpu_text] = f"{cpu_name()} @ {cpu_frequency()[2]/1000} GHz"
-sysfo[gpu_text] = gpu_name()
-sysfo[memory_text] = f"{total_memory-available_memory} / {total_memory} ( {memory_usage_percent}% )"
+#sysfo[gpu_text] = gpu_name()
+
+sysfo[memory_text] = f"{available_memory} / {total_memory} ( {memory_usage_percent}% )"
 
 
 
