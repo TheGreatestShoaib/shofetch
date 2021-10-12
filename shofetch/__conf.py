@@ -1,32 +1,13 @@
-from winfetch.sysmfy import *
-import winfetch.ascii_logos as logo
+from shofetch.sysmfy import *
+import shofetch.ascii_logos as logo
 import emojis
 
-#from winfetch.icons.chinese import *
-from winfetch.icons.chinese import *
+#from shofetch.icons.chinese import *
+from shofetch.icons.chinese import *
 
 msg_type = "chinese"
-#msg_type="chinese"
 
-#banner_name = logo.arch
 banner_name = logo.manjaro 
-
-# Normal Icon
-# uptime_text = emojis.encode(":clock130: Uptime")
-# os_text = emojis.encode(":computer: OS")
-# resolution_text = emojis.encode(":mag: Resolution")
-# memory_text = emojis.encode(":cd: memory")
-# cpu_text = emojis.encode(":paperclip: CPU")
-# gpu_text = emojis.encode(":computer: OS")
-
-#Japanese Characters
-# resolution_text = f"{chr(36950)} Resolution"
-# uptime_text = f"{chr(36786)} uptime"
-# memory_text = f"{chr(36013)} memory"
-# os_text = f"{chr(36783)} OS"
-# cpu_text = f"{chr(36944)} CPU"
-# gpu_text = f"{chr(36013)} GPU"
-
 
 
 sysfo = {}
@@ -55,3 +36,6 @@ sysfo[memory_text] = f"{available_memory} / {total_memory} ( {memory_usage_perce
 #localip / public ip
 #harddisk information
 #shell name
+
+
+

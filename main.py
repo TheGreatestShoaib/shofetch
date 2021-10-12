@@ -1,12 +1,13 @@
 
 from concurrent.futures import ThreadPoolExecutor as threadpool
-from winfetch import __conf
+from shofetch import __conf
 from colorama import Fore
 import os , time , platform
 from pprint import pprint
-import styles
+#import styles
 import emojis
 
+from shofetch import styles
 
 
 

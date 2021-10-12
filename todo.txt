@@ -1,6 +1,0 @@
-
-fix text formatting issue -- done
-
-add extra configs
-
-add gradient colors
