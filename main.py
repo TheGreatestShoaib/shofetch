@@ -1,5 +1,4 @@
 
-from concurrent.futures import ThreadPoolExecutor as threadpool
 from shofetch import __conf
 from colorama import Fore
 import os , time , platform
@@ -31,6 +30,7 @@ def sort_it(datas):
 	else:
 		user = os.environ["USERNAME"]
 	sorted_data = {
+	
 	1: f'{user}@{platform.uname().node} ',
 	2:'--------------',
 
@@ -130,7 +130,33 @@ def custom_msg():
 
         i+=1
 
+def custom_msg():
+    whitespace = "                       "
 
+    #word = "devoured by her smile and now suffocating for her stupidity"
+    print()
+    word = "وَهُوَ  بِكُلِّ  شَيْءٍ  عَلِيمٌ"[::-1]
+
+    word = "ﻻ ﺗَﻘْﻨَﻄُﻮﺍ ﻣِﻦ ﺭَّﺣْﻤَﺔِ ﺍﻟﻠَّﻪِ"[::-1]
+    word  = 'لَا تَقْنَطُوا مِنْ رَحْمَةِ اللَّهِ' [::-1]
+    #word = "رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ"[::-1]
+
+
+    #word = "اَللَّهُمَّ أَجِرْنِي مِنَ النَّارِ"[::-1]
+    #word = "U+0648U+064EU+0647U+064FU+0648U+064E U+0628U+0650U+0643U+064FU+0644U+0650U+0651 U+0634U+064EU+064AU+0652U+0621U+064D U+0639U+064EU+0644U+0650U+064AU+0645U+064C"
+    #word = chr(word)
+
+    i = 31
+    x = 0
+    print(whitespace,end="")
+    while x < len(word):
+        color = f"\033[1;{i}m"
+        print(color+word[x],end="")
+        x+=1
+        if i > 37:
+            i=31
+
+        i+=1
 
 
 
@@ -148,10 +174,17 @@ if __name__ == "__main__":
 
 	# half = len(banner)//2
 	# way_detector = 0
-
+	#print(info_dict)
 
 	keylen= highest_keylen(info_dict)
-	styles.gradient(banner,info_dict,limits,keylen)
+	print()
+	
+	if __conf.theme == "default":
+		styles.gradient(banner,info_dict,limits,keylen,":")
+	elif __conf.theme == "midway":
+		styles.tst_middle_man(banner,info_dict,limits,keylen,":")
+
+	
 	red = emojis.encode(':yellow_circle:')
 
 

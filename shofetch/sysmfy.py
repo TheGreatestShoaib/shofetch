@@ -30,6 +30,7 @@ GPU_MODEL = "lspci |grep VGA |cut -d ':' -f3"
 OS_NAME = "cat /etc/os-release | grep NAME | head -1 | cut -d'\"' -f 2"
 MEM_INFO = "free | grep Mem  | awk '{print $2}' "
 
+UPTIME_UNIX = "cat /proc/uptime | cut -d \" \" -f1"
 #  powershell "Get-CimInstance -ClassName Win32_VideoController -Property *"
 
 
@@ -92,6 +93,33 @@ def unix_os_version():
 	return stdout_control(OS_NAME)
 
 def unix_uptime():
+    
+    
+    raw_sec = float(stdout_control(UPTIME_UNIX))
+
+
+    def convert(seconds):
+         seconds = seconds % (24 * 3600)
+         hour = seconds // 3600
+         seconds %= 3600
+         minutes = seconds // 60
+         seconds %= 60
+         
+         if int(hour) < 1:
+             return f"{int(minutes)} min"
+     
+         return f"{ int(hour)} hour {int(minutes)} min"
+     
+    
+    converted_uptime = convert(raw_sec)
+
+    return converted_uptime
+
+
+
+
+
+
     uptime2 = "uptime |awk -F'[:, ]' '{print $7\"h\" \" \"$8\"m\"}'"
     return stdout_control(uptime2)
 
