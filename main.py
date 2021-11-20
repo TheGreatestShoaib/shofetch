@@ -23,19 +23,30 @@ green = Fore.GREEN
 cyan = Fore.CYAN
 white = Fore.WHITE
 
-def sort_it(datas):
+def sort_it(datas,sort_system = "midway"):
 
 	if platform.system()== "Linux":
 		user = os.environ["USER"]
 	else:
-		user = os.environ["USERNAME"]
-	sorted_data = {
-	
-	1: f'{user}@{platform.uname().node} ',
-	2:'--------------',
+		user = os.environ["USERNAME"]	
 
-	}
-	x = 3
+	sorted_data = {}
+
+	if sort_system == "default":
+		sorted_data[1] = f'{user}@{platform.uname().node} '
+		sorted_data[2] = '--------------'
+		x = 3
+
+	else:
+		x = 0
+
+
+
+	#1: f'{user}@{platform.uname().node} ',
+	#2:'--------------',
+	#}
+	
+
 	for key,value in datas.items():
 		sorted_data[x] = (key,value)
 		x+=1

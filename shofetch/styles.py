@@ -14,6 +14,7 @@ def highest_middleman(dict_list):
 
 
 
+
     return highest_val
 
 
@@ -67,157 +68,94 @@ def gradient(banner,data,limits,highest_key_len,seperator):
 
 
 
-
-
 def tst_middle_man(banner,data,limits,highest_key_len,seperator):
-    green = Fore.CYAN
-    cyan = Fore.CYAN
-    white = Fore.WHITE
-    whitespace = "    "
-    seperator = seperator
-
-    half = len(banner)//2
-    way_detector = 0
+    #print(data,banner)
+    
+    #print(len(data))
+    #pprint(data)
+    index_keys = 0
+    second_index_keys = 1
 
 
-    print(len(banner))
-
-    if len(banner) > len(data):
-        b_dix = len(banner)
-        f_bix = len(banner) // 2
-    else:
-        b_dix = len(data) // 2 
-
-    print(b_dix)
-
-
-    for i in range(b_dix):
+    #Avoid Error
+    if len(data) < 7 :
+        damn_len =  7 - len(data)
+        darn = list(data.keys())[-1]
         
-        try :
-            key = data[i][0]
-            val = data[i][1]
-            key2 = data[i+f_dix][0]
-            val2 = data[i+f_dix][1]
-
-
-            print(key,val,whitespace,banner[i],white,key2,val2)
-        except Exception as e:
-            
-            print(key,":",val,whitespace,banner[i])
+        for i in range(damn_len):
+            #print(i)
+            darn += 1 
+            ind = darn
+            data[ind] = ("","")
 
 
 
 
+    #Detecting the highest len from from keys and values
+
+    data_list = [( str(key) , str(val[0]+val[1]) ) for key,val in data.items() if key%2 == 0]
+    lim = highest_middleman(data_list)
 
 
 
 
+    #main work 
 
+    limited_info_number = 17
 
+    for ind,ban in enumerate(banner,3):
 
+        if index_keys < limited_info_number :
 
-
-
-
-
-def middle_man(banner,data,limits,highest_key_len,seperator):
-
-    green = Fore.CYAN
-    cyan = Fore.BLUE
-    white = Fore.WHITE
-    
-    whitespace = "    "
-    seperator = seperator
-    half = len(banner)//2
-    way_detector = 0
-    lst = []
-
-    
-    key_list = [x for x in data.keys()]
-
-    if (len(key_list) % 2) == 0:
-        devision = len(key_list)//2
-    else:
-        devision = (len(key_list)//2)+1
-
-    #devision = len(key_list)//2
-    left_side_count = 1
-    right_side_count = devision
-
-    #print(right_side_count)
-    
-    minimal = (len(key_list)- right_side_count)+1
-
-    ranged_sti_val = -2
-    ranged_eti_val = right_side_count-1
-
-    ranged_sti_val = -2
-    ranged_eti_val = right_side_count-1
-
-    for i in range(ranged_sti_val,ranged_eti_val):
-        try:
-            
-            data_key = data[i+2][0]
-            data_value = data[i+2][1]
-            
-            lst.append( (data_key,data_value) )
+            try :
+       
+                key = data[index_keys][0]
+                val = data[index_keys][1]
         
-        except KeyError:
-            pass
+                key2 = data[second_index_keys][0]
+                val2 = data[second_index_keys][1]
 
-
-    #print(len(lst))
-
-    lim = highest_middleman(lst)
+            except :
+                key = data[index_keys][0]
+                val = data[index_keys][1]
+                key2 = ""
+                val2 = ""
     
+            comb = str(key)+" "+str(val)
 
-    i=0
+            seperator = " : "
 
-    while left_side_count < minimal:
+            if (len(comb)+3) < lim:
+                pass
+                sep = " "* ( ( lim - len(str(key+val)) )+1 ) 
+                print(key,seperator,val,sep,ban," ",key2,seperator,val2)
 
-        right_side_count = i+minimal
-
-
-        try:
-            #apply gradient effect by changing color here
-
-            if way_detector > half-1:
-                cyan = Fore.RED
-
-
-            #defing data for both sides
-
-            key=data[left_side_count][0]
-            key_2 = data[right_side_count][0]
-            
-            value = data[left_side_count][1]
-            value_2 = data[right_side_count][1]
-            
-            combined_len = str(key+value)
-
-
-            #main theme starts here
-            
-            if len(combined_len) <= lim:
-                sep = " "*((lim-len(combined_len))+1) 
-                print(green ,key,seperator,value,sep, cyan, banner[i],"   ",green ,key_2,seperator,value_2)
 
             else:
-                print(green ,key,seperator,value, cyan, banner[i], green ,key_2,seperator,value_2)
+                if val2 == "":
+                    seperator = "   "
+                print(key,seperator,val,"  ",ban," ",key2,seperator,val2)
 
-        except:
+                seperator = " : "
+            
+            index_keys += 2
+            second_index_keys +=2
 
-            combined_len = str(key+value)
-            if len(combined_len) <= lim:
-                sep = " "*((lim-len(combined_len))+1) 
-                print(green ,key,seperator,value,sep, cyan, banner[i])  
 
-            else:
-                print(green ,key,seperator,value, cyan, banner[i])
+        else:
+            sep  = " "*(lim+8)
+            print( sep,ban)
+    
 
-        
-        #increment Vars
-        i+=1
-        left_side_count+=1
-        right_side_count+=1
-        way_detector+=1
+
+
+
+
+
+
+    
+
+# if len(data) >= len(banner):
+#     halfway = ( len(banner)//2 ) + 1
+# else:
+#     halfway = (len(data) // 2 ) + 1
