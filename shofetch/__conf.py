@@ -44,7 +44,7 @@ sysfo[memory_text] = f"{available_memory} / {total_memory} ( {memory_usage_perce
 sysfo[gpu_text+"11"] = host_name().node
 sysfo[os_text] = os_version()
 sysfo[cpu_text+"14"] = host_name().node
-sysfo[os_text+"12"] = kernel()
+#sysfo[os_text+"12"] = kernel()
 
 
 #cpu threads
