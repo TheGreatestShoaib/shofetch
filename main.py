@@ -23,7 +23,7 @@ green = Fore.GREEN
 cyan = Fore.CYAN
 white = Fore.WHITE
 
-def sort_it(datas,sort_system = "midway"):
+def sort_it(datas,sort_system = __conf.theme):
 
 	if platform.system()== "Linux":
 		user = os.environ["USER"]
