@@ -14,8 +14,6 @@ theme = "midway"
 #msg_type = "custom"
 #msg_type = "random"
 
-
-
 msg_type = "chinese"
 msg_type = "defualt"
 
