@@ -17,11 +17,13 @@ theme = "midway"
 msg_type = "chinese"
 msg_type = "defualt"
 
-banner_name = logo.small_arch
+banner_name = logo.arch
+#banner_name = logo.small_arch
+
 sysfo = {}
 
 #sysfo["Platform"] = platform_name()
-sysfo[gpu_text+"1"] = host_name().node
+#sysfo[gpu_text+"1"] = host_name().node
 sysfo[os_text] = os_version()
 sysfo[cpu_text+"1"] = host_name().node
 sysfo[os_text+"1"] = kernel()
