@@ -94,7 +94,7 @@ def art_it(art):
 	return empt
 
 def defult_msg():
-    whitespace="                     "
+    whitespace=" "*31
     print(whitespace,end='')
     for i in range(31,35):
         color = f"\033[1;{i}m "
@@ -102,7 +102,7 @@ def defult_msg():
 
     print()
     print(whitespace,end='')
-    for i in range(36,39):
+    for i in range(36,40):
         color = f"\033[1;{i}m "
         print(color,red,end='')
 

@@ -18,7 +18,11 @@ msg_type = "chinese"
 msg_type = "defualt"
 
 banner_name = logo.arch
-#banner_name = logo.small_arch
+banner_name = logo.small_arch # arch 
+# banner_name = logo.manjaro # manjaro
+# banner_name = logo.brh # windoes
+banner_name = logo.linux # linux
+
 
 sysfo = {}
 
