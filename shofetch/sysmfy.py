@@ -29,8 +29,15 @@ ARCHITECTURE = "uname -m"
 GPU_MODEL = "lspci |grep VGA |cut -d ':' -f3"
 OS_NAME = "cat /etc/os-release | grep NAME | head -1 | cut -d'\"' -f 2"
 MEM_INFO = "free | grep Mem  | awk '{print $2}' "
-
+SHELL_NAME = "which $SHELL"
 UPTIME_UNIX = "cat /proc/uptime | cut -d \" \" -f1"
+
+#Defferent Based Linux Command
+
+ARCH_PACK = "pacman -Q | wc -l"
+DEBIAN_PACK = "apt list --installed | wc -l"
+
+
 #  powershell "Get-CimInstance -ClassName Win32_VideoController -Property *"
 
 
@@ -91,6 +98,28 @@ def unix_kernel():
 
 def unix_os_version():
 	return stdout_control(OS_NAME)
+
+def unix_shell_name():
+    return stdout_control(SHELL_NAME)
+
+def unix_terminal_name():
+    return os.environ["TERM"]
+
+def unix_desktop_name():
+    return os.environ["DESKTOP_SESSION"]
+
+
+def unix_package_list():
+    base = 'arch'
+    
+    if base == 'arch':
+        amount = stdout_control(ARCH_PACK)
+    elif base == 'debian':
+        amount = stdout_control(DEBIAN_PACK)
+
+    return amount
+        
+
 
 def unix_uptime():
     
@@ -201,6 +230,11 @@ else:
 	cpu_name = unix_cpu  #f"{stdout_control(CPU_MODEL)} @ {cpu_frequency} GHz"
 	gpu_name = unix_gpu
 	os_version = unix_os_version
+	packages = unix_package_list
+	shell = unix_shell_name
+	terminal = unix_terminal_name
+	desktop_manager = unix_desktop_name
+
 	# total_memory = unix_total_memory
 	# available_memory = unix_free_memory
 	# memory_usage_percent = int(unix_used_memory()) / (int(unix_total_memory()) * 100 )
