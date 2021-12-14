@@ -53,17 +53,17 @@ sysfo = {}
 
 
 
-#sysfo["Platform"] = platform_name()
+# sysfo["Platform"] = platform_name()
 sysfo[os_text] = os_version()
 sysfo[uptime_text] = uptime()
 sysfo[resolution_text] = screensize()
 sysfo[uptime_text] = uptime()
 sysfo[storage_text] = disk_sec()
-sysfo[packages_text] = packages()
-sysfo[shell_text] = shell()
-sysfo[wm_text] = desktop_manager()
+sysfo[build_text] = build_version()
+# sysfo[shell_text] = shell()
+# sysfo[wm_text] = desktop_manager()
 
-sysfo[terminal_text] = terminal()
+# sysfo[terminal_text] = terminal()
 
 
 #sysfo["Cpus-Freq "] = f"{cpu_frequency()[2]/1000} gHZ"

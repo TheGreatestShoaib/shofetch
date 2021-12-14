@@ -18,6 +18,7 @@ memory = psutil.virtual_memory()
 
 WIN_GPU ="powershell \"Get-CimInstance -ClassName Win32_VideoController -Property caption|Select-Object caption \"" 
 WIN_CPU = "wmic cpu get name"
+UPTIME_WIN = "powershell (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime"
 
 
 #Unix_Shell_commands
@@ -49,6 +50,21 @@ def stdout_control(cmd):
 
 #win_things
 
+def win_ver():
+	vercmd = " ".join(platform.platform().split(".")[0].split("-")[:2])
+	return vercmd
+
+
+def build_ver():
+	cmd = platform.platform().split(".")[2].split("-")[0]
+	return cmd
+
+def win_uptime():
+	upcmd = stdout_control(UPTIME_WIN)
+	raw_uptime = upcmd.split("\n")[1:4]
+	list_uptime = [x.split(":")[1].strip() for x in raw_uptime]
+	context = f"{list_uptime[0]} hour {list_uptime[1]} min"
+	return context 
 
 def win_gpu():
 	output = Popen(WIN_GPU,shell=True, stdout=PIPE).communicate()[0].decode().split("\n")
@@ -194,7 +210,7 @@ host_name = platform.uname
 #raw_uptime = psutil.boot_time()
 #uptime = datetime.datetime.fromtimestamp(raw_uptime).strftime("%H:%M:%S")
 
-uptime = unix_uptime
+# uptime = unix_uptime
 
 #memory_related_variables
 total_memory =( memory.total // 1024 ** 2)
@@ -218,9 +234,11 @@ if platform_name() == "Windows":
 	screensize = win_screensize
 	processor_architecture = win_processor_arch
 	kernel = win_kernel
-	os_version = platform.platform
+	os_version = win_ver
+	build_version = build_ver
 	gpu_name = win_gpu
 	cpu_name = win_cpu #f"{win_cpu()} @ { cpu_frequency[2]/100 } GHz "
+	uptime = win_uptime
 
 else:
 
@@ -234,6 +252,7 @@ else:
 	shell = unix_shell_name
 	terminal = unix_terminal_name
 	desktop_manager = unix_desktop_name
+	uptime = unix_uptime
 
 	# total_memory = unix_total_memory
 	# available_memory = unix_free_memory

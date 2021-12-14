@@ -23,4 +23,5 @@ battery_text = f"{chr(36013)} Battery"
 ip_text = f"{chr(36950)} IP"
 ssid_text = f"{chr(36786)} SSID "
 wm_text = f"{chr(36013)} WM"
+build_text = f"{chr(36950)} Build Version"
 
