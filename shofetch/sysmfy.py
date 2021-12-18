@@ -19,6 +19,11 @@ memory = psutil.virtual_memory()
 WIN_GPU ="powershell \"Get-CimInstance -ClassName Win32_VideoController -Property caption|Select-Object caption \"" 
 WIN_CPU = "wmic cpu get name"
 UPTIME_WIN = "powershell (get-date) - (gcim Win32_OperatingSystem).LastBootUpTime"
+WIN_TASKS = "powershell (tasklist).count"
+WIN_BATTERY_REMAINING = "powershell (Get-WmiObject win32_battery).estimatedChargeRemaining"
+WIN_BATTERY_RUNTIME = "powershell (Get-WmiObject win32_battery).estimatedRunTime"
+WIN_FREE_MEM = """powershell (Get-Counter '\Memory\Available MBytes').CounterSamples.CookedValue """
+WIN_TOTAL_MEM = 'powershell (get-wmiobject -class "win32_physicalmemory" -namespace "root\CIMV2").Capacity'
 
 
 #Unix_Shell_commands
@@ -77,20 +82,47 @@ def win_cpu():
 	return output[1].strip()
 
 
-def win_processor_arch():
+def win_processor_arch(): 
 	return os.environ["PROCESSOR_ARCHITECTURE"]
+
+def win_kernel(): 
+	kernel = platform.platform().split("-")[2]
+	return kernel
+
+def win_tasks():
+	output = stdout_control(WIN_TASKS)
+	return output
+
+def win_battery_remaining():
+	output =stdout_control(WIN_BATTERY_REMAINING)
+	return output
+def win_battery_runtime():
+	output =stdout_control(WIN_BATTERY_RUNTIME)
+	return output
+
+
+def memfo():
+	total_mem = int(stdout_control(WIN_TOTAL_MEM))
+	free_mem = int(stdout_control(WIN_FREE_MEM))
+	used_mem = int(int(total_mem) - int(free_mem))
+	percent = round((( free_mem / total_mem ) * 100),2)
+	context = f"{used_mem} / {total_memory} ( {percent}% usage)"
+	return context
+
+
+
+
+
 
 def win_screensize():
 	import ctypes
 	user32 = ctypes.windll.user32
 	screen = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
-	screensize = f"{screen[1]}x{screen[1]} Pixels"
+	screensize = f"{screen[0]}x{screen[1]} Pixels"
 
 	return screensize
 
 
-def win_kernel():
-	return os.environ["OS"]
 
 
 
@@ -200,6 +232,9 @@ def disk_info():
 
 platform_name = platform.system
 cpu_frequency  = psutil.cpu_freq
+
+
+
 total_cores = os.cpu_count
 cpu_frequency  = psutil.cpu_freq
 
@@ -239,6 +274,10 @@ if platform_name() == "Windows":
 	gpu_name = win_gpu
 	cpu_name = win_cpu #f"{win_cpu()} @ { cpu_frequency[2]/100 } GHz "
 	uptime = win_uptime
+	tasks = win_tasks
+	battery_percent = win_battery_remaining
+	battery_runtime = win_battery_runtime
+	memory_info  = memfo
 
 else:
 
