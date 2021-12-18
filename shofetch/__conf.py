@@ -3,7 +3,7 @@ import shofetch.ascii_logos as logo
 #import emojis
 
 #from shofetch.icons.nature import *
-from shofetch.icons.chinese import *
+from shofetch.icons.normal import *
 
 
 theme = "default"
