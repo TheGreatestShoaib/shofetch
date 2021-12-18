@@ -45,6 +45,7 @@ UNIX_USED_MEM = "free | grep Mem  | awk '{print $2}' "
 UNIX_FREE_MEM = "free | grep Mem  | awk '{print $2}' "
 
 
+
 #Defferent Based Linux Command
 
 ARCH_PACK = "pacman -Q | wc -l"
@@ -144,6 +145,12 @@ def unix_processor_arch():
 
 def unix_screensize():
 	return stdout_control(SCREEN_RES_LINUX)
+
+def unix_desktop_enviroment():
+    try:
+        return os.environ["DESKTOP_SESSION"]
+    except:
+        return " "
 
 def unix_gpu():
 	return stdout_control(GPU_MODEL)
@@ -281,9 +288,9 @@ host_name = platform.uname
 # uptime = unix_uptime
 
 #memory_related_variables
-total_memory =( memory.total // 1024 ** 2)
-available_memory = (memory.available // 1024 ** 2 )
-memory_usage_percent = memory.percent
+# total_memory =( memory.total // 1024 ** 2)
+# available_memory = (memory.available // 1024 ** 2 )
+# memory_usage_percent = memory.percent
 
 
 #storage related info
@@ -323,7 +330,7 @@ else:
     packages = unix_package_list
     shell = unix_shell_name
     terminal = unix_terminal_name
-    desktop_manager = unix_desktop_name
+    desktop_manager = unix_desktop_enviroment
     uptime = unix_uptime
     tasks = unix_process_count
     memory_info = unix_memfo

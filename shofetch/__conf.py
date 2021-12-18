@@ -3,7 +3,7 @@ import shofetch.ascii_logos as logo
 #import emojis
 
 #from shofetch.icons.nature import *
-from shofetch.icons.chinese import *
+from shofetch.icons.egypt import *
 
 
 theme = "default"
@@ -46,7 +46,7 @@ sysfo[shell_text] = shell()
 sysfo[taskcount_text] = tasks()
 #sysfo[battery_percent_text] = battery_percent()
 #sysfo[battery_runtime_text] = battery_runtime()
-# sysfo[wm_text] = desktop_manager()
+sysfo[wm_text] = desktop_manager()
 
 sysfo[terminal_text] = terminal()
 
