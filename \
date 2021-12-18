@@ -49,10 +49,8 @@ UNIX_FREE_MEM = "free | grep Mem  | awk '{print $2}' "
 
 ARCH_PACK = "pacman -Q | wc -l"
 DEBIAN_PACK = "apt list --installed | wc -l"
-GET_PROCESS = r"ps -o 'cmd=' -p $(ps -o 'ppid=' -p $$)"
-GET_term = "ps -p $$ -o ppid= | awk '{print $1}'"
+TERMINAL = r"ps -o 'cmd=' -p $(ps -o 'ppid=' -p $$)"
 
-GET_TERM = "pstree -s $$"
 
 #  powershell "Get-CimInstance -ClassName Win32_VideoController -Property *"
 
@@ -161,15 +159,7 @@ def unix_shell_name():
     return stdout_control(SHELL_NAME).split("/")[2]
 
 def unix_terminal_name():
-    
-    get_term  = stdout_control(GET_TERM).split("---")
-    x = 0
-    while get_term[x] == "systemd":
-        x+=1
-    term_name = get_term[x]
-    return term_name
-    
-
+    return stdout_control(TERMINAL)
 
 def unix_desktop_name():
     return os.environ["DESKTOP_SESSION"]
