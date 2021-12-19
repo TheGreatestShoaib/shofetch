@@ -1,0 +1,21 @@
+
+
+dekhi {
+ipinfo  - ajke
+ssid_name
+bat
+}
+
+ajke{
+storage -> free usage used 
+window manager
+shell
+}
+
+kalke {
+icons
+theme
+packages
+music playername
+
+}

@@ -1,12 +1,16 @@
+import time
+
+start =  time.perf_counter()
 
 from shofetch import __conf
 from colorama import Fore
-import os , time , platform
+import os, platform
 from pprint import pprint
 #import styles
 import emojis
 
 from shofetch import styles
+
 
 
 
@@ -94,7 +98,7 @@ def art_it(art):
 	return empt
 
 def defult_msg():
-    whitespace="                     "
+    whitespace=" "*31
     print(whitespace,end='')
     for i in range(31,35):
         color = f"\033[1;{i}m "
@@ -102,7 +106,7 @@ def defult_msg():
 
     print()
     print(whitespace,end='')
-    for i in range(36,39):
+    for i in range(36,40):
         color = f"\033[1;{i}m "
         print(color,red,end='')
 
@@ -110,7 +114,7 @@ def defult_msg():
 
 def chinese_msg():
     word = [36781,36782 ,36783 ,36784 ,36785 ,36786]
-    whitespace = "                      "
+    whitespace = " "*29
     x = 0
     print(whitespace,end="")
     for i in range(31,35):
@@ -216,3 +220,9 @@ if __name__ == "__main__":
 print()
 print()
 
+
+end = time.perf_counter()
+
+print()
+
+print(end-start)
