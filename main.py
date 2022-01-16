@@ -1,5 +1,5 @@
 import time
-
+from pprint import pprint
 start =  time.perf_counter()
 
 from shofetch import __conf
@@ -13,6 +13,11 @@ from shofetch import styles
 
 
 
+
+
+CONFIG_DATA = __conf.confs_getter()
+
+# pprint(CONFIG_DATA)
 
 def clear():
 	if platform.system() == "Windows":
@@ -52,7 +57,10 @@ def sort_it(datas,sort_system = __conf.theme):
 	
 
 	for key,value in datas.items():
+		# if key is not None and value is not None:
 		sorted_data[x] = (key,value)
+		# else:
+		# pass
 		x+=1
 
 	return sorted_data
@@ -178,7 +186,7 @@ def custom_msg():
 if __name__ == "__main__":
 
 
-	info_dict = sort_it(__conf.sysfo)
+	info_dict = sort_it(CONFIG_DATA)
 	raw_banner = __conf.banner_name.split("\n")
 	banner = art_it(raw_banner)
 	#banner = raw_banner
