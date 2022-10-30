@@ -80,8 +80,11 @@ class Linux:
         return stdout_control(self.OS_NAME)
 
     def shell_name(self):
-        return stdout_control(self.SHELL_NAME).split("/")[2]
- 
+        try :
+            return stdout_control(self.SHELL_NAME).split("/")[2]
+        except:
+            return ""
+
     def process_counts(self):
         return str(int(stdout_control(self.UNIX_PROCESS))-2)
   
