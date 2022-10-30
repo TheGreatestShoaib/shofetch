@@ -68,7 +68,11 @@ class Linux:
         return stdout_control(self.GPU_MODEL)
 
     def desktop_name(self):
-        return os.environ["DESKTOP_SESSION"]
+        try:
+            return os.environ["DESKTOP_SESSION"]
+        except:
+            return ""
+
 
     def cpu_name(self):
         return stdout_control(self.CPU_MODEL)

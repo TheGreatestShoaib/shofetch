@@ -1,7 +1,7 @@
 
 from shofetch.sysmfy import *
 import shofetch.ascii_logos as logo
-from shofetch.icons.egypt import *
+from shofetch.icons.normal import *
 
 
 theme = "default"
