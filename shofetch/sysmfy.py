@@ -92,8 +92,8 @@ class Linux:
     def desktop_enviroment(self):
         try:
             return os.environ["DESKTOP_SESSION"]
-        except:
-            return " "
+        except KeyError:
+            return ""
 
 
     def terminal_name(self):
