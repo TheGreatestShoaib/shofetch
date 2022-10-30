@@ -88,7 +88,7 @@ class Linux:
     def process_counts(self):
         return str(int(stdout_control(self.UNIX_PROCESS))-2)
   
-    @Decorators.only_Linux
+
     def desktop_enviroment(self):
         try:
             return os.environ["DESKTOP_SESSION"]
