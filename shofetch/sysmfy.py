@@ -93,7 +93,6 @@ class Linux:
             return " "
 
 
-    @Decorators.only_Linux
     def terminal_name(self):
         
         get_term  = stdout_control(self.GET_TERM).split("---")
@@ -104,7 +103,6 @@ class Linux:
         return term_name
         
 
-    @Decorators.only_Linux
     def package_list(self):
         base = 'arch'
         
@@ -279,7 +277,7 @@ processor_architecture = system.processor_architecture # processor_archi
 terminal = system.terminal_name
 shell = system.shell_name
 desktop_manager = system.desktop_name
-
+packages = system.package_list
 
 #HardwareBased informatin
 gpu_name = system.gpu_name

@@ -4,7 +4,7 @@ resolution_text =f"{chr(63378)} Resolution"
 uptime_text =f"{chr(63055)} Uptime"
 memory_text = f" memory"
 os_text = f"{chr(63523)} OS"
-cpu_text =f"{chr(62171)} CPU"
+cpu_text =f" CPU"
 gpu_text =f" GPU"
 
 
@@ -14,7 +14,7 @@ kernel_text = f" Kernel"
 
 shell_text = f"✤ Shell"
 terminal_text = f" Terminal" #hoise
-packages_text = f""
+packages_text = f" Packages"
 
 battery_percent_text = ""
 battery_runtime_text = ""

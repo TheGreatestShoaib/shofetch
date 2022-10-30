@@ -15,8 +15,9 @@ from shofetch import styles
 
 
 
-CONFIG_DATA = __conf.confs_getter()
+# CONFIG_DATA = __conf.confs_getter()
 
+CONFIG_DATA = __conf.sysfo
 # pprint(CONFIG_DATA)
 
 def clear():
