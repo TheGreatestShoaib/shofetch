@@ -14,14 +14,13 @@ def stdout_control(cmd):
 
 def disk_info():
     disk = shutil.disk_usage(".")
-    disk_used = round((( disk.free ) / 1024**3),2)
+    disk_used = round((( disk.used ) / 1024**3),2)
     disk_total = round(((  disk.total ) / 1024**3),2 )
-    free_disk = round((( disk_used / disk_total ) * 100),2)
-    
-    context = f"{disk_used} / {disk_total} ({free_disk}% free)"
+    disk_free = round((( disk.free ) / 1024**3),2)
+    percent = (1 - (disk_used / disk_total )) * 100
+    context = f"{disk_used} / {disk_total} ({percent:.2f}% free)"
 
     return context
-
 
 class Linux:
     def __init__(self):
@@ -250,8 +249,19 @@ class Windows:
 
     #Empty PlaceHolders
 
+
     def terminal_name(self):
         return ""
+
+    def shell_name(self):
+        return ""
+    
+    def desktop_name(self):
+        return ""
+    
+    def package_list(self):
+        return ""
+
 
 
 if platform.system() == "Linux":

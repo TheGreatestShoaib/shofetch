@@ -201,7 +201,7 @@ if __name__ == "__main__":
 
 
 
-	info_dict = clean_it(sort_it(CONFIG_DATA))
+	info_dict = sort_it(CONFIG_DATA)
 	raw_banner = __conf.banner_name.split("\n")
 	banner = art_it(raw_banner)
 	#banner = raw_banner
@@ -214,8 +214,8 @@ if __name__ == "__main__":
 	# way_detector = 0
 	#print(info_dict)
 
-	keylen= highest_keylen(info_dict)
-	print()
+	# keylen= highest_keylen(info_dict)
+	keylen = 10
 	
 	if __conf.theme == "default":
 		styles.gradient(banner,info_dict,limits,keylen,":")
@@ -233,6 +233,8 @@ if __name__ == "__main__":
 
 	elif __conf.msg_type == "custom":
 		custom_msg(__conf.custom_msg_txt,(int(len(banner[-1])) + __conf.custom_msg_padding ))
+	elif __conf.msg_type == "None" :
+		print()
 	else:
 		defult_msg()
 
