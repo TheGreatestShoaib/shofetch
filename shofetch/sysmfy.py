@@ -4,14 +4,6 @@ import os
 import shutil
 
 
-class Decorators :
-    def only_Linux(func):
-        return func
-
-    def only_Windows(func):
-        return func
-
-
 def stdout_control(cmd):
 	output = Popen(cmd,shell=True, stdout=PIPE).communicate()[0]
 	return output.decode().strip()
@@ -49,8 +41,8 @@ class Linux:
         #rams
        
         self.UNIX_TOTAL_MEM = "free | grep Mem  | awk '{print $2}' "
-        self.UNIX_USED_MEM = "free | grep Mem  | awk '{print $2}' "
-        self.UNIX_FREE_MEM = "free | grep Mem  | awk '{print $2}' "
+        self.UNIX_USED_MEM = "free | grep Mem  | awk '{print $3}' "
+        self.UNIX_FREE_MEM = "free | grep Mem  | awk '{print $4}' "
         #Defferent Based Linux Command
 
         self.ARCH_PACK = "pacman -Q | wc -l"
@@ -85,7 +77,7 @@ class Linux:
 
     def shell_name(self):
         try :
-            return stdout_control(self.SHELL_NAME).split("/")[2]
+            return stdout_control(self.SHELL_NAME).split("/")[3]
         except:
             return ""
 
@@ -103,10 +95,7 @@ class Linux:
     def terminal_name(self):
         
         get_term  = stdout_control(self.GET_TERM).split("---")
-        x = 0
-        while get_term[x] == "systemd":
-            x+=1
-        term_name = get_term[x]
+        term_name = get_term[-4]
         return term_name
         
 
@@ -121,13 +110,16 @@ class Linux:
         return amount
 
 
-    def meminfo(self):
+    def meminfo(self, load=False):
         total_mem = int(stdout_control(self.UNIX_TOTAL_MEM))
         used_mem = int(stdout_control(self.UNIX_USED_MEM))
         free_mem = total_mem - used_mem
-        percent  = round((free_mem / total_mem)*100 ,2)
+        if load is True:
+            percent  = f"{100 - round((free_mem / total_mem)*100 ,2)}% free"
+        else:
+            percent  = f"{round((free_mem / total_mem)*100 ,2)}% load"
 
-        context = f"{used_mem} / {total_mem} ( {percent}% free)"
+        context = f"{used_mem} / {total_mem} ( {percent})"
 
         return context
 
@@ -156,7 +148,6 @@ class Linux:
         # return stdout_control(uptime2)
 
 
-    @Decorators.only_Windows
     def build_version(self):
         pass
 
@@ -166,6 +157,15 @@ class Linux:
     def battery_runtime(self):
         pass
 
+
+
+"""
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                Window Information Section
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+"""
 
 
 
@@ -187,7 +187,6 @@ class Windows:
         return vercmd
 
 
-    @Decorators.only_Windows
     def build_version(self):
         cmd = platform.platform(self).split(".")[2].split("-")[0]
         return cmd
@@ -230,9 +229,6 @@ class Windows:
         return output
 
 
-    @Decorators.only_Linux
-    def terminal_name(self):
-        pass
 
 
     def meminfo(self):
@@ -252,6 +248,10 @@ class Windows:
 
         return screensize
 
+    #Empty PlaceHolders
+
+    def terminal_name(self):
+        return ""
 
 
 if platform.system() == "Linux":

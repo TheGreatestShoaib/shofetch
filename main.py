@@ -15,6 +15,14 @@ from shofetch import styles
 
 
 
+
+
+
+
+
+
+
+
 # CONFIG_DATA = __conf.confs_getter()
 
 CONFIG_DATA = __conf.sysfo
@@ -27,6 +35,19 @@ def clear():
 		os.system("clear")
 
 clear()
+
+
+def clean_it(dict):
+    
+    new_dict = {}
+
+    for i,j in dict.items():
+        if j[1] != "" and j[1] != "None" and j[1] is not None:
+            new_dict[i] = j
+
+    return new_dict
+
+
 
 #colors 
 green = Fore.GREEN
@@ -49,6 +70,10 @@ def sort_it(datas,sort_system = __conf.theme):
 
 	else:
 		x = 0
+
+
+
+
 
 
 
@@ -187,7 +212,8 @@ def custom_msg():
 if __name__ == "__main__":
 
 
-	info_dict = sort_it(CONFIG_DATA)
+
+	info_dict = clean_it(sort_it(CONFIG_DATA))
 	raw_banner = __conf.banner_name.split("\n")
 	banner = art_it(raw_banner)
 	#banner = raw_banner
@@ -224,14 +250,3 @@ if __name__ == "__main__":
 	else:
 		defult_msg()
 
-
-
-print()
-print()
-
-
-end = time.perf_counter()
-
-print()
-
-print(end-start)
