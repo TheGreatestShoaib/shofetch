@@ -1,7 +1,7 @@
 
 from shofetch.sysmfy import *
 import shofetch.ascii_logos as logo
-sysfo = {}
+
 
 
 
@@ -29,12 +29,14 @@ theme = "default"
 #msg_type = "custom"
 #msg_type = "random"
 # msg_type = "chinese"
-msg_type = "defualt"
-
+msg_type = "custom"
+word = "devoured by her smile and now suffocating for her stupidity "
+custom_msg_txt = word
+custom_msg_padding = 8
 
 # Logos : arch,brh,mac,manjaro,small_arch,linux,android,windows_v2
 banner_name = logo.arch
-#banner_name = logo.small_arch # arch 
+# banner_name = logo.small_arch # arch 
 
 
 """ 
@@ -46,6 +48,8 @@ e.g. sysfo["custom cpu text"].
 A static value can also be implemented simply by declaring it as a text for fast performance.
 
 """
+
+sysfo = {}
 
 
 sysfo[os_text] = os_version()

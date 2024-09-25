@@ -21,11 +21,10 @@ from shofetch import styles
 
 
 
-
-
 # CONFIG_DATA = __conf.confs_getter()
 
 CONFIG_DATA = __conf.sysfo
+
 # pprint(CONFIG_DATA)
 
 def clear():
@@ -70,17 +69,6 @@ def sort_it(datas,sort_system = __conf.theme):
 
 	else:
 		x = 0
-
-
-
-
-
-
-
-	#1: f'{user}@{platform.uname().node} ',
-	#2:'--------------',
-	#}
-	
 
 	for key,value in datas.items():
 		# if key is not None and value is not None:
@@ -161,51 +149,51 @@ def chinese_msg():
         x+=1
 
 
-def custom_msg():
-    whitespace = "                       "
+# def custom_msg():
+#     whitespace = "                       "
+#
+#     word = "devoured by her smile and now suffocating for her stupidity"
+#
+#
+#     i = 31
+#     x = 0
+#     print(whitespace,end="")
+#     while x < len(word):
+#         color = f"\033[1;{i}m"
+#         print(color+word[x],end="")
+#         x+=1
+#         if i > 37:
+#             i=31
+#
+#         i+=1
 
-    word = "devoured by her smile and now suffocating for her stupidity"
+def custom_msg(msg, whitespace_multiplier):
+    whitespace = " " * whitespace_multiplier
 
-
-    i = 31
-    x = 0
-    print(whitespace,end="")
-    while x < len(word):
-        color = f"\033[1;{i}m"
-        print(color+word[x],end="")
-        x+=1
-        if i > 37:
-            i=31
-
-        i+=1
-
-def custom_msg():
-    whitespace = "                       "
-
-    #word = "devoured by her smile and now suffocating for her stupidity"
     print()
-    word = "وَهُوَ  بِكُلِّ  شَيْءٍ  عَلِيمٌ"[::-1]
-
-    word = "ﻻ ﺗَﻘْﻨَﻄُﻮﺍ ﻣِﻦ ﺭَّﺣْﻤَﺔِ ﺍﻟﻠَّﻪِ"[::-1]
-    word  = 'لَا تَقْنَطُوا مِنْ رَحْمَةِ اللَّهِ' [::-1]
-    #word = "رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ"[::-1]
-
-
-    #word = "اَللَّهُمَّ أَجِرْنِي مِنَ النَّارِ"[::-1]
-    #word = "U+0648U+064EU+0647U+064FU+0648U+064E U+0628U+0650U+0643U+064FU+0644U+0650U+0651 U+0634U+064EU+064AU+0652U+0621U+064D U+0639U+064EU+0644U+0650U+064AU+0645U+064C"
+    # word = "وَهُوَ  بِكُلِّ  شَيْءٍ  عَلِيمٌ"[::-1]
+    # word = "ﻻ ﺗَﻘْﻨَﻄُﻮﺍ ﻣِﻦ ﺭَّﺣْﻤَﺔِ ﺍﻟﻠَّﻪِ"[::-1]
+    # word  = 'لَا تَقْنَطُوا مِنْ رَحْمَةِ اللَّهِ' [::-1]
+    # #word = "رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ"[::-1]
+    # word = "اَللَّهُمَّ أَجِرْنِي مِنَ النَّارِ"[::-1]
+    # word = "U+0628U+0650U+0643U+064FU+0644U+0650U+0651 U+0634U+064EU+064AU+0652U+0621U+064D U+0639U+064EU+0644U+0650U+064AU+0645U+064C"
     #word = chr(word)
-
+    word = msg
     i = 31
     x = 0
     print(whitespace,end="")
     while x < len(word):
         color = f"\033[1;{i}m"
-        print(color+word[x],end="")
+        print(color+word[x],end="",flush=True)
+        time.sleep(0.008)
         x+=1
         if i > 37:
             i=31
 
         i+=1
+    print()
+
+
 
 
 
@@ -238,15 +226,13 @@ if __name__ == "__main__":
 	red = emojis.encode(':yellow_circle:')
 
 
-	print()
-
 
 
 	if __conf.msg_type == "chinese":
 		chinese_msg()
 
 	elif __conf.msg_type == "custom":
-		custom_msg()
+		custom_msg(__conf.custom_msg_txt,(int(len(banner[-1])) + __conf.custom_msg_padding ))
 	else:
 		defult_msg()
 
